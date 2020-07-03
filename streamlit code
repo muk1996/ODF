@@ -1,0 +1,39 @@
+import streamlit as st
+import pandas as pd
+import numpy as np
+import plotly.express as px
+
+st.title("Open Data Forecasting")
+
+#sidebar
+st.sidebar.title("Predicting the Population")
+
+#description on the mainpage
+st.markdown("Using the census data of 🇵🇰 - we predict the future population of the country ")
+
+#copying it to the sidebar
+st.sidebar.markdown("Using the census data of 🇵🇰 - we predict the population of the country in the coming years  ")
+
+#loading the csv file
+data_url = ("C:/Users/hp/Desktop/Python dashboards/streamlit/combined_districts.csv")
+
+@st.cache(persist=True)
+def load_data():
+    data = pd.read_csv(data_url)
+    return data
+
+data = load_data()
+
+#adding subheader on sidebar
+st.sidebar.subheader("Show different provinces")
+pak_province = st.sidebar.radio('Provinces' , ('Balochistan', 'KPK', 'NWFP', 'Punjab', 'Sindh'))
+st.sidebar.markdown(data.query('province == @pak_province')[["text"]].sample(n=1).iat[0,0])
+
+
+st.sidebar.markdown("### Predicted population per year")
+select = st.sidebar.selectbox('Visualization Type', ['Histogram', 'Pie Chart'], key='1')
+population_count = data['province'].value_counts()
+
+
+
+
