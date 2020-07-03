@@ -21,7 +21,7 @@ st.sidebar.markdown("Using the census data of 🇵🇰 - we predict the populati
 #loading the csv file
 #data_url = ("C:/Users/hp/Desktop/Python dashboards/streamlit/combined_districts.csv")
 
-DATA_URL = ('C:/Users/Mohammad Usman/Desktop/streamlit/combined_districts.csv')
+DATA_URL = ("combined_districts.csv")
 
 @st.cache
 def load_data():
