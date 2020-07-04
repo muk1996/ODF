@@ -235,5 +235,5 @@ def model_dist(year, district):
 model_dist, t_pop_dist =  model_dist(option, option2)
 fig = px.bar(model_dist, x='Age Bracket', y='Population', color = 'Age Bracket')
 predicted_year = option + 2
-st.write("The prediction is for Province "+ option2 + " for the Year " + str(predicted_year), fig)
-st.write("The prediction is for Province "+ option2 + " for the Year " + str(predicted_year), t_pop_dist)
+st.write("The prediction is for District "+ option2 + " for the Year " + str(predicted_year), fig)
+st.write("The prediction is for District "+ option2 + " for the Year " + str(predicted_year), t_pop_dist)
