@@ -249,11 +249,11 @@ model_pak, t_pop =  model(year)
 if (select == "Histogram"):
     fig = px.bar(model_pak, x='Age Bracket', y='Population', color = 'Age Bracket' ) 
     st.write("The prediction is for the Year " + str(year), fig)
-    st.write("The Total Population for the Year " + str(year)+ " is ", int(t_pop.Total.sum()))
+    st.write("The Total Population for the Year " + str(year)+ " is ", int(t_pop.loc[0:4][["Total"]].sum()))
 elif (select == "Pie Chart"):
     fig = px.pie(model_pak, values='Population', names='Age Bracket')
     st.write("The Pie Chart of the Total Population for the Year " + str(year), fig)
-    st.write("The Total Population for the Year " + str(year)+ " is ", int(t_pop.Total.sum()))
+    st.write("The Total Population for the Year " + str(year)+ " is ", int(t_pop.loc[0:4][["Total"]].sum()))
 else:
     fig = px.scatter_mapbox(model_pak, lat=data_country['lat'], lon=data_country['lon'], 
                 size=t_pop["Total"], color='Age Bracket', color_continuous_scale=px.colors.cyclical.IceFire, size_max=20, zoom=5,
